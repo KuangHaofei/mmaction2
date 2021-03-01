@@ -59,6 +59,12 @@ def parse_args():
         default='none',
         help='job launcher')
     parser.add_argument('--local_rank', type=int, default=0)
+
+    parser.add_argument(
+        '--freeze-backbone',
+        action='store_true',
+        help='whether to freeze backbone during training')
+
     args = parser.parse_args()
     if 'LOCAL_RANK' not in os.environ:
         os.environ['LOCAL_RANK'] = str(args.local_rank)
@@ -144,6 +150,11 @@ def main():
         cfg.model,
         train_cfg=cfg.get('train_cfg'),
         test_cfg=cfg.get('test_cfg'))
+
+    if args.freeze_backbone:
+        # freeze all layers but the last fc
+        for name, param in model.backbone.named_parameters():
+            param.requires_grad = False
 
     register_module_hooks(model.backbone, cfg.module_hooks)
 
