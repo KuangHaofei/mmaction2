@@ -82,9 +82,11 @@ evaluation = dict(
 
 # optimizer
 optimizer = dict(type='SGD', lr=0.025, momentum=0.9, weight_decay=0.0001)
+lr_config = dict(policy='step', step=[20, 40])
+total_epochs = 50
 
 # runtime settings
 checkpoint_config = dict(interval=5)
 work_dir = './work_dirs/tsn_r50_1x1x8_50e_hmdb51_seco-k400_rgb/'
-load_from = '/home/ubuntu/mmaction2/checkpoints/seco_mm.pth'  # noqa: E501
+load_from = '/home/ubuntu/mmaction2/checkpoints/seco_tsn_mm.pth'  # noqa: E501
 gpu_ids = range(0, 1)
