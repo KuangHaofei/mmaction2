@@ -50,7 +50,7 @@ test_pipeline = [
         test_mode=True),
     dict(type='RawFrameDecode'),
     dict(type='Resize', scale=(-1, 256)),
-    dict(type='ThreeCrop', crop_size=256),
+    dict(type='CenterCrop', crop_size=256),
     dict(type='Flip', flip_ratio=0),
     dict(type='Normalize', **img_norm_cfg),
     dict(type='FormatShape', input_format='NCHW'),
@@ -80,12 +80,12 @@ evaluation = dict(
 
 # optimizer
 optimizer = dict(
-    type='SGD', lr=0.00128, momentum=0.9,
+    type='SGD', lr=0.01, momentum=0.9,
     weight_decay=0.0005)  # this lr is used for 8 gpus
 optimizer_config = dict(grad_clip=dict(max_norm=40, norm_type=2))
 # learning policy
-lr_config = dict(policy='step', step=[])
-total_epochs = 75
+lr_config = dict(policy='step', step=[120, 240])
+total_epochs = 300
 
 # runtime settings
 checkpoint_config = dict(interval=5)
