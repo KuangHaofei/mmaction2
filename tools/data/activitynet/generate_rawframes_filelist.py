@@ -98,9 +98,15 @@ def generate_rawframes_filelist():
 
     train_clips, val_clips = [], []
     for k in training:
-        train_clips.extend(clip_list(k, database[key_dict[k]], training[k]))
+        if k.startswith('v_'):
+            train_clips.extend(clip_list(k, database[key_dict[k[2:]][2:]], training[k]))
+        else:
+            train_clips.extend(clip_list(k, database[key_dict[k[7:]][7:]], training[k]))
     for k in validation:
-        val_clips.extend(clip_list(k, database[key_dict[k]], validation[k]))
+        if k.startswith('v_'):
+            val_clips.extend(clip_list(k, database[key_dict[k[2:]][2:]], validation[k]))
+        else:
+            val_clips.extend(clip_list(k, database[key_dict[k[7:]][7:]], validation[k]))
 
     with open(osp.join(data_file, 'anet_train_clip.txt'), 'w') as fout:
         fout.write('\n'.join(train_clips))
