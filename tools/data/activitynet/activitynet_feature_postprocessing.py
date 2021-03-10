@@ -65,10 +65,11 @@ def pool_feature(data, num_proposals=100, num_sample_bins=3, pool_type='mean'):
 def merge_feat(name):
     # concatenate rgb feat and flow feat for a single sample
     rgb_feat = load(osp.join(args.rgb, name))
-    flow_feat = load(osp.join(args.flow, name))
+    # flow_feat = load(osp.join(args.flow, name))
     rgb_feat = pool_feature(rgb_feat)
-    flow_feat = pool_feature(flow_feat)
-    feat = np.concatenate([rgb_feat, flow_feat], axis=-1)
+    # flow_feat = pool_feature(flow_feat)
+    # feat = np.concatenate([rgb_feat, flow_feat], axis=-1)
+    feat = rgb_feat
     if not osp.exists(args.dest):
         os.system(f'mkdir -p {args.dest}')
     if args.output_format == 'pkl':
@@ -76,7 +77,7 @@ def merge_feat(name):
     elif args.output_format == 'csv':
         feat = feat.tolist()
         lines = []
-        line0 = ','.join([f'f{i}' for i in range(400)])
+        line0 = ','.join([f'f{i}' for i in range(200)])
         lines.append(line0)
         for line in feat:
             lines.append(','.join([f'{x:.4f}' for x in line]))
@@ -88,8 +89,8 @@ def main():
     global args
     args = parse_args()
     rgb_feat = os.listdir(args.rgb)
-    flow_feat = os.listdir(args.flow)
-    assert set(rgb_feat) == set(flow_feat)
+    # flow_feat = os.listdir(args.flow)
+    # assert set(rgb_feat) == set(flow_feat)
     pool = multiprocessing.Pool(32)
     pool.map(merge_feat, rgb_feat)
 
