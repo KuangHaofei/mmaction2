@@ -10,6 +10,8 @@ ann_file_train = '/home/ubuntu/drive2/ActivityNet/anet_anno_train.json'
 ann_file_val = '/home/ubuntu/drive2/ActivityNet/anet_anno_val.json'
 ann_file_test = '/home/ubuntu/drive2/ActivityNet/anet_anno_val.json'
 
+model = dict(feat_dim=200)
+
 test_pipeline = [
     dict(type='LoadLocalizationFeature'),
     dict(
