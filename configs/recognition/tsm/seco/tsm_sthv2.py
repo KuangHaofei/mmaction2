@@ -92,4 +92,4 @@ optimizer = dict(
 
 # runtime settings
 work_dir = './work_dirs/tsm_r50_1x1x16_50e_sthv2_rgb/'
-load_from = '/home/ubuntu/mmaction2/checkpoints/seco_tsn_mm.pth'
+load_from = '/home/ubuntu/mmaction2/checkpoints/seco_tsn_mm_tsm.pth'
