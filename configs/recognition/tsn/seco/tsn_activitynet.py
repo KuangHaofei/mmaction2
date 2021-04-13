@@ -92,6 +92,6 @@ evaluation = dict(
 optimizer = dict(type='SGD', lr=0.01, momentum=0.9, weight_decay=0.0001)
 
 # runtime settings
-work_dir = './work_dirs/seco-tsn/tsn_activitynet/'
-load_from = '/home/ubuntu/mmaction2/checkpoints/seco_tsn_mm.pth'
+work_dir = './work_dirs/vclr/tsn_activitynet/'
+load_from = '/home/ubuntu/mmaction2/checkpoints/vclr_mm.pth'
 workflow = [('train', 5)]

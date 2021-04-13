@@ -86,5 +86,5 @@ total_epochs = 9
 
 # runtime settings
 log_config = dict(interval=50, hooks=[dict(type='TextLoggerHook')])
-work_dir = './work_dirs/bmn_activitynet_seco/'
+work_dir = './work_dirs/vclr/bmn_activitynet/'
 output_config = dict(out=f'{work_dir}/results.json', output_format='json')

@@ -87,6 +87,6 @@ total_epochs = 50
 
 # runtime settings
 checkpoint_config = dict(interval=5)
-work_dir = './work_dirs/tsn_r50_1x1x8_50e_hmdb51_seco-k400_rgb/'
-load_from = '/home/ubuntu/mmaction2/checkpoints/seco_tsn_mm.pth'  # noqa: E501
+work_dir = './work_dirs/vclr/hmdb51'
+load_from = '/home/ubuntu/mmaction2/checkpoints/vclr_mm.pth'  # noqa: E501
 gpu_ids = range(0, 1)

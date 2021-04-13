@@ -91,5 +91,5 @@ optimizer = dict(
     weight_decay=0.0005)
 
 # runtime settings
-work_dir = './work_dirs/tsm_r50_1x1x16_50e_sthv2_rgb/'
-load_from = '/home/ubuntu/mmaction2/checkpoints/seco_tsn_mm_tsm.pth'
+work_dir = './work_dirs/vclr/tsm_sthv2/'
+load_from = '/home/ubuntu/mmaction2/checkpoints/vclr_mm_tsm.pth'

@@ -82,5 +82,5 @@ optimizer = dict(
 
 # runtime settings
 checkpoint_config = dict(interval=5)
-work_dir = './work_dirs/tsn_r50_1x1x8_50e_sthv2_rgb/'
-load_from = '/home/ubuntu/mmaction2/checkpoints/seco_tsn_mm.pth'
+work_dir = './work_dirs/vclr/tsn_sthv2/'
+load_from = '/home/ubuntu/mmaction2/checkpoints/vclr_mm.pth'

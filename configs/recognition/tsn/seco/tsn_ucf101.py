@@ -89,5 +89,5 @@ total_epochs = 300
 
 # runtime settings
 checkpoint_config = dict(interval=5)
-work_dir = f'./work_dirs/tsn_r50_1x1x3_75e_ucf101_split_{split}_rgb/'
-load_from = '/home/ubuntu/mmaction2/checkpoints/seco_tsn_mm.pth'
+work_dir = f'./work_dirs/vclr/ucf101'
+load_from = '/home/ubuntu/mmaction2/checkpoints/vclr_mm.pth'
