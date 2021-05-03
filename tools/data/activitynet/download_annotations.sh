@@ -1,4 +1,4 @@
-DATA_DIR="../../../data/ActivityNet/"
+DATA_DIR="${HOME}/drive2/ActivityNet/"
 
 if [[ ! -d "${DATA_DIR}" ]]; then
   echo "${DATA_DIR} does not exist. Creating";
