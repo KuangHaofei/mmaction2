@@ -65,6 +65,11 @@ def parse_args():
         action='store_true',
         help='whether to freeze backbone during training')
 
+    parser.add_argument(
+        '--bmn',
+        action='store_true',
+        help='ignore the backbone while using the BMN model')
+
     args = parser.parse_args()
     if 'LOCAL_RANK' not in os.environ:
         os.environ['LOCAL_RANK'] = str(args.local_rank)
@@ -156,7 +161,8 @@ def main():
         for name, param in model.backbone.named_parameters():
             param.requires_grad = False
 
-    register_module_hooks(model.backbone, cfg.module_hooks)
+    if not args.bmn:
+        register_module_hooks(model.backbone, cfg.module_hooks)
 
     if cfg.omnisource:
         # If omnisource flag is set, cfg.data.train should be a list

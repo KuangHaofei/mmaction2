@@ -80,6 +80,10 @@ def parse_args():
         default='none',
         help='job launcher')
     parser.add_argument('--local_rank', type=int, default=0)
+    parser.add_argument(
+        '--bmn',
+        action='store_true',
+        help='ignore the backbone while using the BMN model')
     args = parser.parse_args()
     if 'LOCAL_RANK' not in os.environ:
         os.environ['LOCAL_RANK'] = str(args.local_rank)
@@ -178,7 +182,8 @@ def main():
     model = build_model(
         cfg.model, train_cfg=None, test_cfg=cfg.get('test_cfg'))
 
-    register_module_hooks(model.backbone, cfg.module_hooks)
+    if not args.bmn:
+        register_module_hooks(model.backbone, cfg.module_hooks)
 
     fp16_cfg = cfg.get('fp16', None)
     if fp16_cfg is not None:
